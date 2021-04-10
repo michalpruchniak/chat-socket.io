@@ -5,6 +5,9 @@ const server = http.createServer(app)
 const socket = require("socket.io")
 const io = socket(server)
 
+
+let clients = [];
+
 io.on("connection", socket => {
     socket.emit("your id", socket.id)
 
@@ -12,12 +15,21 @@ io.on("connection", socket => {
         io.emit("message", body)
     })
 
-    // socket.on("my name", name => {
-    //     socket.on("new user", name)
-    // })
+
     socket.on("my name", users => {
         io.emit("new user", users)
+        clients.push(users)
+        io.emit("all users", clients)
+        console.log(clients)
+
     })
+
+    socket.on('disconnect', function () {
+        clients.splice(clients.indexOf(socket), 1);
+        io.emit("all users", clients)
+        console.log(clients)
+    });
+
 })
 
 server.listen(8000, () => {

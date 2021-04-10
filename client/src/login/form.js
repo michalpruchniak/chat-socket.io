@@ -5,11 +5,6 @@ const Form = (props) => {
     const onCheckName = (e) => {
         e.preventDefault();
         props.LoginToChat(inputName.current.value)
-        // const userObject = {
-        //     id: yourID,
-        //     name: inputName.current.value
-        // }
-        // socketRef.current.emit("my name", userObject)
     }
     return(
         <div>
