@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react'
 import io from 'socket.io-client'
 
+import Login from './login/form'
+
 function App() {
   const [yourID, setYourID] = useState();
   const [users, setUsers] = useState([]);
   const [login, setLogin] = useState({id: "", name: "Michał"})
-  const inputName = useRef("");
   const socketRef = useRef();
 
   useEffect(() => {
@@ -22,14 +23,14 @@ function App() {
 
   }, [])
 
-  const onCheckName = (e) => {
-    e.preventDefault();
+  const LoginToChat = (name) => {
     const userObject = {
       id: yourID,
-      name: inputName.current.value
+      name: name
     }
     socketRef.current.emit("my name", userObject)
   }
+
   return (
     <div className="App">
      {/* {yourID} */}
@@ -41,11 +42,7 @@ function App() {
 
       </ul>
       World
-     <form method="post" onSubmit={onCheckName}>
-       <label htmlFor="name">Name</label>
-        <input type="text" name="name" id="name" ref={inputName}/>
-       <button role="submit">Wejdź</button>
-     </form>
+      <Login LoginToChat={(name) => LoginToChat(name) }/>
     </div>
   );
 }
