@@ -11,8 +11,9 @@ let clients = [];
 io.on("connection", socket => {
     socket.emit("your id", socket.id)
 
-    socket.on("send message", body => {
-        io.emit("message", body)
+    socket.on("message", message => {
+        io.emit("message", message)
+        console.log(message)
     })
 
 
@@ -20,14 +21,12 @@ io.on("connection", socket => {
         io.emit("new user", users)
         clients.push(users)
         io.emit("all users", clients)
-        console.log(clients)
 
     })
 
     socket.on('disconnect', function () {
         clients.splice(clients.indexOf(socket), 1);
         io.emit("all users", clients)
-        console.log(clients)
     });
 
 })

@@ -1,9 +1,13 @@
 import Users from './users'
+import Messageform from './form'
 const Chat = (props) => {
     return(
-        <Users
-            users={props.users}
-        />
+        <div>
+            <Users
+                users={props.users}
+            />
+            <Messageform SendMessage={props.SendMessage} />
+        </div>
     )
 }
 export default Chat;

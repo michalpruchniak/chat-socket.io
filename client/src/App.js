@@ -33,6 +33,15 @@ function App() {
     }
     socketRef.current.emit("my name", userObject)
   }
+
+  const SendMessage = (message) => {
+    const messageObject = {
+      userID: yourID,
+      message: message
+    }
+    socketRef.current.emit('message', messageObject)
+
+  }
   if(!login.name){
     return <Login
               LoginToChat={(name) => LoginToChat(name)}
@@ -40,6 +49,7 @@ function App() {
   }
    return <Chat
               users={users}
+              SendMessage={(message) => SendMessage(message)}
           />
 }
 
