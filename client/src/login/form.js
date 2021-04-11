@@ -11,7 +11,7 @@ const Form = (props) => {
             <form method="post" onSubmit={onCheckName}>
                 <label htmlFor="name">Name</label>
                 <input type="text" name="name" id="name" ref={inputName} />
-                <button role="submit">Wejdź</button>
+                <button role="submit">Enter</button>
             </form>
         </div>
     );

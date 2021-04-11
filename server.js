@@ -12,8 +12,8 @@ io.on("connection", socket => {
     socket.emit("your id", socket.id)
 
     socket.on("message", message => {
-        io.emit("message", message)
-        console.log(message)
+        io.emit("new message", message)
+
     })
 
 

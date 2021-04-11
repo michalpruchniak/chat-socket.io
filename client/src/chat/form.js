@@ -12,7 +12,7 @@ const Messageform = (props) => {
         <div>
             <form method="post" onSubmit={sendMessage}>
                 <input type="text" name="name" id="name" ref={inputMessage} />
-                <button role="submit">Wejdź</button>
+                <button role="submit">Send message</button>
             </form>
         </div>
     )

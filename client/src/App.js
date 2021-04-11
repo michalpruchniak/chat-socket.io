@@ -8,6 +8,7 @@ function App() {
   const [yourID, setYourID] = useState();
   const [users, setUsers] = useState([]);
   const [login, setLogin] = useState({id: "", name: ""})
+  const [messages, setMessages] = useState([])
   const socketRef = useRef();
 
   useEffect(() => {
@@ -16,14 +17,17 @@ function App() {
     socketRef.current.on("your id", id => {
       setYourID(id)
     })
-    socketRef.current.on("all users", users=> {
+    socketRef.current.on("all users", users => {
       setUsers(users);
     })
-    socketRef.current.on("new user", user=> {
+    socketRef.current.on("new user", user => {
       setLogin(user);
     })
 
-    console.log(users)
+    socketRef.current.on("new message", message => {
+      setMessages(oldMessages => [...oldMessages, message])
+    })
+
   }, [])
 
   const LoginToChat = (name) => {
@@ -50,6 +54,7 @@ function App() {
    return <Chat
               users={users}
               SendMessage={(message) => SendMessage(message)}
+              messages={messages}
           />
 }
 
