@@ -11,6 +11,7 @@ function App() {
   const [messages, setMessages] = useState([])
   const socketRef = useRef();
 
+
   useEffect(() => {
     socketRef.current = io.connect('/');
 
@@ -19,9 +20,6 @@ function App() {
     })
     socketRef.current.on("all users", users => {
       setUsers(users);
-    })
-    socketRef.current.on("new user", user => {
-      setLogin(user);
     })
 
     socketRef.current.on("new message", message => {
@@ -36,11 +34,14 @@ function App() {
       name: name
     }
     socketRef.current.emit("my name", userObject)
+    setLogin(userObject);
+
   }
 
   const SendMessage = (message) => {
     const messageObject = {
-      userID: yourID,
+      userID: login.id,
+      userName: login.name,
       message: message
     }
     socketRef.current.emit('message', messageObject)
@@ -52,6 +53,7 @@ function App() {
            />
   }
    return <Chat
+              yourID={yourID}
               users={users}
               SendMessage={(message) => SendMessage(message)}
               messages={messages}

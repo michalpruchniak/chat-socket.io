@@ -4,15 +4,22 @@ import Messages from './messages'
 const Chat = (props) => {
     return(
         <div>
-            <Users
-                users={props.users}
-            />
-            <Messageform
-                SendMessage={props.SendMessage}
-            />
-            <Messages
-                messages={props.messages}
-            />
+            <div className="messages__list">
+                <Users
+                    users={props.users}
+                    yourID={props.yourID}
+
+                />
+                <Messages
+                    messages={props.messages}
+                    yourID={props.yourID}
+                />
+            </div>
+            <div className="messages__form">
+                <Messageform
+                    SendMessage={props.SendMessage}
+                />
+            </div>
         </div>
     )
 }

@@ -18,7 +18,6 @@ io.on("connection", socket => {
 
 
     socket.on("my name", users => {
-        io.emit("new user", users)
         clients.push(users)
         io.emit("all users", clients)
 
