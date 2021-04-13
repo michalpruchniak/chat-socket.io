@@ -11,7 +11,7 @@ button{
 }
 .messages__list{
   height: 90vh;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 .messages__form{
   display: grid;

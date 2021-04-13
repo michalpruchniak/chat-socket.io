@@ -7,9 +7,13 @@ const Messageform = (props) => {
     const sendMessage = (e) => {
         e.preventDefault();
         props.SendMessage(inputMessage.current.value)
-        chatmessages.scrollTop = chatmessages.scrollHeight;
         e.target.elements.msg.value = ''
         e.target.elements.msg.focus()
+
+        setTimeout(() => {
+            chatmessages.scrollTop = chatmessages.scrollHeight;
+
+        }, 100)
     }
 
     return(

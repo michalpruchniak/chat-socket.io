@@ -24,6 +24,11 @@ function App() {
 
     socketRef.current.on("new message", message => {
       setMessages(oldMessages => [...oldMessages, message])
+      const chatmessages = document.querySelector(".messages__list")
+      setTimeout(() => {
+        chatmessages.scrollTop = chatmessages.scrollHeight;
+
+      }, 100)
     })
 
   }, [])
