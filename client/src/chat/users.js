@@ -5,7 +5,7 @@ const Users = (props) => {
 
     useEffect(() => {
         setUsers(props.users)
-    })
+    }, [props.users])
     return(
         <ul>
             {users.map((user) =>

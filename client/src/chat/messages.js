@@ -5,12 +5,12 @@ const Messages = (props) => {
 
     useEffect(() => {
         setMessages(props.messages)
-    })
+    }, [props.messages])
     return(
         <ul className="messages__conversation">
             {messages.map((msg, index) =>
 
-                <li key={index} className={msg.userID===props.yourID ? 'messages__your' : 'messages__other'}>{msg.userName}<p>{msg.message}</p></li>
+                <li key={index} className={msg.userID === props.yourID ? 'messages__your' : 'messages__other'}><span className="messages__username">{msg.userName}</span><p>{msg.message}</p></li>
             )}
         </ul>
     )
