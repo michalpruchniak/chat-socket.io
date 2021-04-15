@@ -12,7 +12,16 @@ button{
   width: 150px;
 }
 .messages__list{
+  display: flex;
   height: 90vh;
+
+}
+.messages__userslist{
+  width: 10%;
+  height: 90vh;
+}
+.messages__conversion{
+  width: 90%;
   overflow-y: auto;
 }
 .messages__form{
