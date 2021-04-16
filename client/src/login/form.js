@@ -7,10 +7,15 @@ const Form = (props) => {
         props.LoginToChat(inputName.current.value)
     }
     return(
-        <div>
+        <div className="login">
+            <h2>Login to the chat</h2>
             <form method="post" onSubmit={onCheckName}>
-                <label htmlFor="name">Name</label>
-                <input type="text" name="name" id="name" ref={inputName} />
+                <input type="text"
+                       name="name"
+                       id="name"
+                       ref={inputName}
+                       placeholder="Enter your name"
+                 />
                 <button role="submit">Enter</button>
             </form>
         </div>

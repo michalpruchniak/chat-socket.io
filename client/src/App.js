@@ -27,7 +27,6 @@ function App() {
       const chatconversation = document.querySelector(".messages__conversion")
       setTimeout(() => {
         chatconversation.scrollTop = chatconversation.scrollHeight;
-
       }, 100)
     })
 

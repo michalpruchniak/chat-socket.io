@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Users = (props) => {
     const [users, setUsers] = useState([])
@@ -9,7 +9,7 @@ const Users = (props) => {
     return(
         <ul>
             {users.map((user) =>
-                <li key={user.id}>{user.name}</li>
+                <li key={user.id} className="messages__singleuser">{user.name}</li>
             )}
         </ul>
     );
