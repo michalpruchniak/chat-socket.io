@@ -5,14 +5,23 @@ const server = http.createServer(app)
 const socket = require("socket.io")
 const io = socket(server)
 
+const { userJoin, getCurrentUser, getUsers } = require('./client/src/include/users')
+
 
 let clients = [];
 
 io.on("connection", socket => {
     socket.emit("your id", socket.id)
 
+    socket.on('joinRoom', ({name, room}) => {
+        const user = userJoin(socket.id, name, room)
+        socket.join(user.room)
+    })
     socket.on("message", message => {
-        io.emit("new message", message)
+        const user = getCurrentUser(socket.id)
+        console.log(user)
+        io.to(user.room)
+          .emit("new message", message)
 
     })
 

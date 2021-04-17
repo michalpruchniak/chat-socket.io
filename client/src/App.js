@@ -15,6 +15,7 @@ function App() {
   useEffect(() => {
     socketRef.current = io.connect('/');
 
+
     socketRef.current.on("your id", id => {
       setYourID(id)
     })
@@ -27,16 +28,18 @@ function App() {
       const chatconversation = document.querySelector(".messages__conversion")
       setTimeout(() => {
         chatconversation.scrollTop = chatconversation.scrollHeight;
-      }, 100)
+      }, 2500)
     })
 
   }, [])
 
-  const LoginToChat = (name) => {
+  const LoginToChat = (name, room) => {
     const userObject = {
       id: yourID,
-      name: name
+      name: name,
+      room: room
     }
+    socketRef.current.emit('joinRoom', userObject)
     socketRef.current.emit("my name", userObject)
     setLogin(userObject);
 
@@ -53,7 +56,7 @@ function App() {
   }
   if(!login.name){
     return <Login
-              LoginToChat={(name) => LoginToChat(name)}
+              LoginToChat={(name, room) => LoginToChat(name, room)}
            />
   }
    return <Chat
