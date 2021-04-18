@@ -16,19 +16,15 @@ io.on("connection", socket => {
     socket.on('joinRoom', ({name, room}) => {
         const user = userJoin(socket.id, name, room)
         socket.join(user.room)
+        io.emit("all users", getUsers())
+
+
     })
     socket.on("message", message => {
         const user = getCurrentUser(socket.id)
-        console.log(user)
+
         io.to(user.room)
           .emit("new message", message)
-
-    })
-
-
-    socket.on("my name", users => {
-        clients.push(users)
-        io.emit("all users", clients)
 
     })
 

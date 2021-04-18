@@ -9,7 +9,7 @@ const Users = (props) => {
     return(
         <ul>
             {users.map((user) =>
-                <li key={user.id} className="messages__singleuser">{user.name}</li>
+                <li key={user.id} className="messages__singleuser">{user.username}</li>
             )}
         </ul>
     );

@@ -6,7 +6,6 @@ import Chat from './chat'
 
 function App() {
   const [yourID, setYourID] = useState();
-  const [allusers, setAllusers] = useState([]);
   const [users, setUsers] = useState([]);
   const [login, setLogin] = useState({id: "", name: ""})
   const [messages, setMessages] = useState([])
@@ -39,15 +38,13 @@ function App() {
       room: room
     }
     socketRef.current.emit('joinRoom', userObject)
-    socketRef.current.emit("my name", userObject)
+
     setLogin(userObject);
     socketRef.current.on("all users", users => {
-      setAllusers(users);
-      let hello = users.filter((usr) => {
-        return usr.room == room
+      let usersInRoom = users.filter((usr) => {
+        return usr.room === room
       })
-      console.log(hello)
-      setUsers(hello)
+      setUsers(usersInRoom)
     })
   }
 
