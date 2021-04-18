@@ -5,10 +5,13 @@ const server = http.createServer(app)
 const socket = require("socket.io")
 const io = socket(server)
 
-const { userJoin, getCurrentUser, getUsers } = require('./client/src/include/users')
+const {
+        userJoin,
+        getCurrentUser,
+        getUsers,
+        removeUser
+    } = require('./client/src/include/users')
 
-
-let clients = [];
 
 io.on("connection", socket => {
     socket.emit("your id", socket.id)
@@ -29,8 +32,8 @@ io.on("connection", socket => {
     })
 
     socket.on('disconnect', function () {
-        clients.splice(clients.indexOf(socket), 1);
-        io.emit("all users", clients)
+        removeUser(getUsers().indexOf(socket), 1)
+        io.emit("all users", getUsers())
     });
 
 })

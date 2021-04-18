@@ -6,6 +6,10 @@ function userJoin(id, username, room) {
     users.push(user);
     return user;
 }
+function removeUser(user) {
+    users.splice(user)
+    return users;
+}
 
 function getCurrentUser(id) {
     return users.find(user => user.id === id);
@@ -16,6 +20,7 @@ function getUsers() {
 
 module.exports = {
     userJoin,
+    removeUser,
     getCurrentUser,
     getUsers
 }
