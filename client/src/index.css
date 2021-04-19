@@ -15,8 +15,8 @@ button{
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 40%;
-  padding: 30px;
+  width: 90%;
+  padding: 20px;
   transform: translate(-50%, -50%);
   border: 3px solid #00897b
 }
@@ -95,6 +95,10 @@ button{
   button{
     width: 150px;
   }
+  .login {
+    width: 80%;
+    padding: 30px;
+  }
 }
 @media(min-width: 1000px){
   input[type="text"]{
@@ -110,7 +114,9 @@ button{
   .messages__conversation > li{
     width: 600px;
   }
-
+  .login {
+    width: 45%;
+  }
 }
 @media(min-width: 1300px){
   input[type="text"]{
@@ -118,5 +124,8 @@ button{
 }
   button{
     width: 170px;
+  }
+  .login {
+    width: 30%;
   }
 }
