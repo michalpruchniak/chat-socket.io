@@ -19,9 +19,9 @@ For example:
 cd chat-socket.io
 tmux
 ```
-**press ctrl+b**
-**press ctrl+"**
-in first windows write
+**press ctrl+b**  
+**press ctrl+"**  
+in first windows write  
 ```
 npm start
 ```
