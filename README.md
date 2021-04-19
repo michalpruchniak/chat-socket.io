@@ -1,6 +1,6 @@
 # Chat-online
 ## assumpions
-In this simple project I learn using socket.io library.
+In this simple project I learned using socket.io library.
 ## Technology
 - React
 - Express.js with Socket.io
