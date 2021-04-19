@@ -1,4 +1,9 @@
 # Chat-online
+## assumpions
+In this simple project I learn using socket.io library.
+## Technology
+- React
+- Express.js with Socket.io
 ## Use
 Please download chat-online from Github and install all dependencies.
 ```
